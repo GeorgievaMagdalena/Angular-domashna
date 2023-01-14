@@ -1,0 +1,27 @@
+
+<div class="card" [ngStyle]="stilovi()">
+
+<ng-template #noImg>
+    <p>nema slika</p>
+</ng-template>
+
+<div class="course-title">
+    {{indeks+". "+crs.description}}
+</div>
+<img width="300" alt="Angular Logo" *ngIf="crs.iconUrl; else noImg"
+    src={{crs.iconUrl}}>
+
+<div class="course-description">
+    {{crs.longDescription}}
+</div>
+
+<!-- tochka 2 od domashnata -->
+<div class="classes" [ngSwitch]="crs.lessonsCount">
+    <div *ngSwitchCase="10">This course provides 10 lessons in total!</div>
+    <div *ngSwitchCase="11">This course provides 11 lessons in total!</div>
+    <div *ngSwitchCase="8">This course provides 8 lessons in total!</div>
+    <div *ngSwitchDefault>This course doesn't provide information about the number of lessons.</div>
+</div>
+
+<button (click)="onCrsViewed()">Click for svetle</button>
+</div>
